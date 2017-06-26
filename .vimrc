@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let mapleader=" "
+
 syntax on
 
 " set the runtime path to include Vundle and initialize
@@ -66,6 +68,10 @@ Plugin 'regedarek/ZoomWin'
 
 Plugin 'erig0/cscope_dynamic'
 
+Plugin 'brookhong/cscope.vim'
+
+Plugin 'scrooloose/syntastic'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -83,6 +89,11 @@ filetype plugin indent on    " required
 
 let g:airline#extensions#tabline#enabled = 1
 
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+let g:perforce_open_on_change=1
+
 "Tabs to ViaSat standards
 set expandtab
 set smarttab
@@ -94,3 +105,38 @@ set rnu
 set list
 set listchars=tab:>-,trail:~,extends:>,precedes:<
 set backspace=indent,eol,start
+
+set nowrap
+
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
+
+nnoremap <leader><leader>v :e ~/.vimrc<CR>
+
+nnoremap <leader><leader>t :TagbarToggle<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>N :bN<CR>
+nnoremap <leader><leader>s :source %<CR>
+nnoremap <leader><leader>ne :NERDTreeToggle <CR>
+nnoremap <leader><leader>r :!ctags -R .<CR><CR>
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
