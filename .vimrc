@@ -14,63 +14,35 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
 Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox'
 Plugin 'tmux-plugins/vim-tmux'
 
 "awesome auto complete, need vim built with python and configuration file
 "define near bottom of this config file
 Plugin 'Valloric/YouCompleteMe'
-
-"autocomplete brackets, parens, quotes, etc
 Plugin 'Raimondi/delimitMate'
-
-"Ctrl+n to see file tree
 Plugin 'scrooloose/nerdtree'
-
-"fancy status line
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts = 1
 
-"ask to open file in perforce when writing/changing read only file
 Bundle 'nfvs/vim-perforce'
-
-"Tagbar
 Plugin 'majutsushi/tagbar'
-
 Plugin 'tpope/vim-obsession'
-
-"autofill snippets
 Plugin 'SirVer/ultisnips'
-
-"snippet templates
 Plugin 'honza/vim-snippets'
-
-"multiple plugins can utilize tab
 Bundle 'ervandew/supertab'
-
 Plugin 'regedarek/ZoomWin'
-
 Plugin 'erig0/cscope_dynamic'
-
 Plugin 'brookhong/cscope.vim'
-
 Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-dispatch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -93,6 +65,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 let g:perforce_open_on_change=1
+
+let g:airline_powerline_fonts = 1
 
 "Tabs to ViaSat standards
 set expandtab
@@ -135,8 +109,18 @@ nnoremap <leader>N :bN<CR>
 nnoremap <leader><leader>s :source %<CR>
 nnoremap <leader><leader>ne :NERDTreeToggle <CR>
 nnoremap <leader><leader>r :!ctags -R .<CR><CR>
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lp :lprev<CR>
+nnoremap <leader>sg :SyntasticCheck gcc<CR>
+nnoremap <leader>sc :SyntasticCheck cppcheck<CR>
+nnoremap <leader>sp :SyntasticCheck pyflake<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+set laststatus=2
+
+colorscheme gruvbox
+set background=dark
