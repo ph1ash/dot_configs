@@ -29,6 +29,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
+Plugin 'romkatv/powerlevel10k'
 
 Plugin 'tpope/vim-obsession'
 Plugin 'SirVer/ultisnips'
